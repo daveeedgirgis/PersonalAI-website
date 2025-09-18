@@ -974,8 +974,8 @@ body {
     font-weight: 600;
 }
 
-/* Privacy Threats */
-.privacy-threats {
+/* Privacy Section */
+.privacy-section {
     padding: 60px 0;
     background: var(--accent-bg);
 }
@@ -1029,20 +1029,22 @@ body {
 
 .privacy-promise {
     background: var(--gradient-primary);
-    padding: 32px;
+    padding: 40px;
     border-radius: 12px;
     text-align: center;
     color: white;
-    margin-top: 40px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.privacy-promise h3 {
-    font-size: 1.3rem;
-    margin-bottom: 16px;
+.privacy-promise h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: 700;
 }
 
 .privacy-promise p {
-    font-size: 1rem;
+    font-size: 1.1rem;
     line-height: 1.6;
     opacity: 0.95;
 }
