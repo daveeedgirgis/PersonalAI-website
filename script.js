@@ -19,12 +19,53 @@ document.querySelectorAll('.nav-link').forEach(link => {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const targetId = this.getAttribute('href');
+        const target = document.querySelector(targetId);
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+            // Close mobile menu if open
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            
+            // Smooth scroll with offset for fixed navbar
+            const headerOffset = 70;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
             });
+            
+            // Update active nav link
+            updateActiveNavLink(targetId);
+        }
+    });
+});
+
+// Update active nav link based on current section
+function updateActiveNavLink(currentId) {
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === currentId) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// Update active nav link on scroll
+let currentSection = '';
+const sections = document.querySelectorAll('section[id]');
+
+window.addEventListener('scroll', () => {
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.clientHeight;
+        if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+            const newSection = '#' + section.getAttribute('id');
+            if (newSection !== currentSection) {
+                currentSection = newSection;
+                updateActiveNavLink(currentSection);
+            }
         }
     });
 });
@@ -273,11 +314,11 @@ document.addEventListener('DOMContentLoaded', () => {
 const deviceMockup = document.querySelector('.ai-device-mockup');
 if (deviceMockup) {
     const responses = [
-        "Hello! I'm your personal AI assistant. Your data stays completely private.",
-        "I can help you analyze documents, control smart home devices, and automate tasks - all offline.",
-        "Unlike cloud AI, I learn about you without sharing your information with anyone.",
-        "Need help with scheduling? Data analysis? Home automation? I'm here for you.",
-        "Your conversations with me never leave this device. True privacy, real intelligence."
+        "🔐 VaultAI: Your data stays private. Always processing locally, never uploading to the cloud.",
+        "🔐 VaultAI: I can analyze documents, control smart devices, and automate tasks - all offline in your vault.",
+        "🔐 VaultAI: Unlike cloud AI, I learn about you without sharing your information with anyone.",
+        "🔐 VaultAI: Need help with scheduling? Data analysis? Home automation? Your vault is secure.",
+        "🔐 VaultAI: Your conversations never leave this device. True privacy, real intelligence."
     ];
     
     let currentResponse = 0;
