@@ -539,21 +539,10 @@ body {
 /* Signup Section */
 .signup {
     padding: 60px 0;
-    background: var(--gradient-primary);
-    color: white;
+    background: var(--secondary-bg);
+    color: var(--primary-text);
     text-align: center;
-    position: relative;
-}
-
-.signup::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
-    pointer-events: none;
+    border-top: 1px solid var(--border-color);
 }
 
 .signup-content {
@@ -565,17 +554,23 @@ body {
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 16px;
+    color: var(--primary-text);
 }
 
 .signup-content p {
     font-size: 1.1rem;
     margin-bottom: 32px;
-    opacity: 0.9;
+    color: var(--secondary-text);
 }
 
 .signup-form {
     max-width: 600px;
     margin: 0 auto;
+    background: var(--card-bg);
+    padding: 32px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
 }
 
 .form-group {
@@ -607,6 +602,7 @@ body {
     gap: 10px;
     cursor: pointer;
     font-size: 14px;
+    color: var(--secondary-text);
 }
 
 .checkbox-label input[type="checkbox"] {
@@ -615,7 +611,7 @@ body {
 
 .privacy-note {
     font-size: 14px;
-    opacity: 0.8;
+    color: var(--accent-text);
     margin-top: 15px;
 }
 
